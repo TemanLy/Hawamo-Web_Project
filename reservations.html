@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hawamo Café — Reservations</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">Hawa<span>mo</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="location.html">Location</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="reservations.html">Reservations</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h1>Reserve a Table</h1>
+    <p>Secure your spot — we'll have everything ready for you.</p>
+  </div>
+
+  <!-- RESERVATION SECTION -->
+  <section class="section" style="background: var(--cream);">
+    <div class="container">
+
+      <div class="reservation-wrap">
+
+        <!-- Left: info panel -->
+        <div class="reservation-info reveal">
+          <h2 style="margin-bottom:16px;">Plan Your Visit</h2>
+          <p>Fill in the form and we'll confirm your reservation shortly via WhatsApp. Walk-ins are always welcome, but booking ahead guarantees your preferred spot.</p>
+
+          <div style="margin-top: 32px;">
+            <div class="res-detail">
+              <span class="res-icon">📍</span>
+              <div>
+                <strong>Location</strong><br/>
+                Jl. Kopi Sejati No. 12, Jambi City
+              </div>
+            </div>
+            <div class="res-detail">
+              <span class="res-icon">⏰</span>
+              <div>
+                <strong>Opening Hours</strong><br/>
+                Mon – Fri: 08.00 – 22.00<br/>
+                Sat: 08.00 – 23.00 &nbsp;·&nbsp; Sun: 09.00 – 21.00
+              </div>
+            </div>
+            <div class="res-detail">
+              <span class="res-icon">👥</span>
+              <div>
+                <strong>Group Size</strong><br/>
+                We can accommodate groups of up to 30 people.<br/>
+                For larger events, please contact us directly.
+              </div>
+            </div>
+            <div class="res-detail">
+              <span class="res-icon">💬</span>
+              <div>
+                <strong>Quick Booking via WhatsApp</strong><br/>
+                <a
+                  href="https://wa.me/6281234567890"
+                  target="_blank"
+                  rel="noopener"
+                  style="color: var(--sage); font-weight:600;"
+                >+62 812-3456-7890</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Decorative café image -->
+          <img
+            src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=70"
+            alt="Hawamo interior"
+            style="border-radius: var(--radius); margin-top:32px; height:200px; object-fit:cover; box-shadow: var(--card-shadow);"
+          />
+        </div>
+
+        <!-- Right: reservation form -->
+        <div class="reveal">
+          <div class="res-form-card">
+            <h3 style="margin-bottom:24px; font-family: var(--font-display);">Reservation Details</h3>
+
+            <!-- Form — validation handled by JS in script.js -->
+            <form id="reservationForm" novalidate>
+
+              <div class="form-row">
+                <!-- Full Name -->
+                <div class="form-group">
+                  <label for="name">Full Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="e.g. Rizky Pratama"
+                    autocomplete="name"
+                  />
+                  <span class="form-error"></span>
+                </div>
+
+                <!-- WhatsApp number -->
+                <div class="form-group">
+                  <label for="phone">WhatsApp Number *</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="e.g. 0812-3456-7890"
+                    autocomplete="tel"
+                  />
+                  <span class="form-error"></span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <!-- Reservation date -->
+                <div class="form-group">
+                  <label for="date">Reservation Date *</label>
+                  <input
+                    type="date"
+                    id="date"
+                    name="date"
+                  />
+                  <span class="form-error"></span>
+                </div>
+
+                <!-- Reservation time -->
+                <div class="form-group">
+                  <label for="time">Reservation Time *</label>
+                  <input
+                    type="time"
+                    id="time"
+                    name="time"
+                    min="08:00"
+                    max="21:30"
+                  />
+                  <span class="form-error"></span>
+                </div>
+              </div>
+
+              <!-- Number of guests -->
+              <div class="form-group">
+                <label for="guests">Number of People *</label>
+                <input
+                  type="number"
+                  id="guests"
+                  name="guests"
+                  min="1"
+                  max="30"
+                  placeholder="e.g. 4"
+                />
+                <span class="form-error"></span>
+              </div>
+
+              <!-- Additional notes -->
+              <div class="form-group">
+                <label for="notes">Additional Notes <span style="font-weight:400; color:#9A7055;">(optional)</span></label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  placeholder="e.g. Birthday celebration, outdoor seating preferred, wheelchair access needed…"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%; font-size:1rem; padding:14px;">
+                Submit Reservation ☕
+              </button>
+
+            </form>
+
+            <!-- Success message — shown by JS after valid submission -->
+            <div class="success-message" id="successMessage">
+              <div class="success-icon">🎉</div>
+              <h3>Reservation Confirmed!</h3>
+              <p>
+                Thank you, <strong id="successName"></strong>. Your reservation has been accepted by Hawamo.
+              </p>
+              <p style="margin-top:12px; font-size:0.9rem; color:#6B4C35;">
+                We'll send a confirmation to your WhatsApp shortly. See you soon! ☕
+              </p>
+            </div>
+
+          </div><!-- /res-form-card -->
+        </div>
+
+      </div><!-- /reservation-wrap -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">Hawamo</div>
+          <p>A warm, welcoming café for coffee lovers and good conversations.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="TikTok">🎵</a>
+            <a href="#" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="reservations.html">Reservations</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Find Us</h4>
+          <p>Jl. Kopi Sejati No. 12<br/>Jambi City, Jambi 36111</p>
+          <p style="margin-top:12px;">⏰ Mon – Sun: 08.00 – 22.00</p>
+          <p>📞 +62 812-3456-7890</p>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <p class="footer-copy">© 2024 Hawamo Café. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
