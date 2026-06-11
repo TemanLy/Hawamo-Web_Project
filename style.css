@@ -552,14 +552,38 @@ footer a:hover { color: var(--latte); }
 .about-intro {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 0;
   align-items: center;
+}
+.about-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
 }
 .about-img {
   border-radius: 24px;
-  height: 400px;
+  height: 600px;
   object-fit: cover;
   box-shadow: var(--card-hover);
+  display: block;
+}
+/* Gradasi putih di kiri gambar */
+.about-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    z-index: 999;
+
+    background: linear-gradient(
+        to right,
+        #f7f3ee 0%,
+        rgba(247, 243, 238, 0.9) 20%,
+        rgba(247, 243, 238, 0.6) 50%,
+        rgba(247, 243, 238, 0) 100%
+    );
 }
 
 .vision-mission {
