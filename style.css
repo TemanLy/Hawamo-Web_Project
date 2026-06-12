@@ -107,7 +107,11 @@ p { color: #6B4C35; }
 .section {
   padding: 72px 0;
 }
-
+.container_firsh{
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 .container {
   max-width: 1140px;
   margin: 0 auto;
@@ -559,6 +563,7 @@ footer a:hover { color: var(--latte); }
     position: relative;
     overflow: hidden;
     border-radius: 24px;
+    width: 100%;
 }
 .about-img {
   border-radius: 24px;
@@ -567,21 +572,22 @@ footer a:hover { color: var(--latte); }
   box-shadow: var(--card-hover);
   display: block;
 }
+
 /* Gradasi putih di kiri gambar */
 .about-image::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 40%;
+    width: 60%;
     height: 100%;
     z-index: 999;
 
     background: linear-gradient(
         to right,
         #f7f3ee 0%,
-        rgba(247, 243, 238, 0.9) 20%,
-        rgba(247, 243, 238, 0.6) 50%,
+        rgba(247, 243, 238, 0.9) 10%,
+        rgba(247, 243, 238, 0.6) 30%,
         rgba(247, 243, 238, 0) 100%
     );
 }
