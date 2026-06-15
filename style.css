@@ -458,7 +458,7 @@ footer a:hover { color: var(--latte); }
 /* ===========================
    LOCATION PAGE
    =========================== */
-.map-container {
+.map-container.image-map-wrapper {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--card-shadow);
@@ -471,10 +471,79 @@ footer a:hover { color: var(--latte); }
   border: 2px dashed var(--latte);
   margin-bottom: 56px;
 }
-.map-container iframe {
-  width: 100%; height: 100%; border: none;
+
+.image-map {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
+.pin-1,
+.pin-2,
+.pin-3 {
+  position: absolute;
+  z-index: 5;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #d93025;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+  transform: translate(-50%, -100%);
+  transition: transform 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.28));
+}
+
+.pin-1:hover,
+.pin-2:hover,
+.pin-3:hover {
+  transform: translate(-50%, -120%);
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.35));
+}
+
+.pin-label {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  margin-top: 6px;
+  background: var(--white);
+  color: var(--espresso);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 999px;
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, margin-top 0.2s ease;
+}
+
+.pin-1:hover .pin-label,
+.pin-2:hover .pin-label,
+.pin-3:hover .pin-label {
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.pin-1 {
+  top: 27%;
+  left: 62%;
+}
+
+.pin-2 {
+  top: 34%;
+  left: 39%;
+}
+
+.pin-3 {
+  top: 78%;
+  left: 29%;
+}
 .area-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
