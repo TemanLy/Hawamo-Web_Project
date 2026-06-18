@@ -19,7 +19,25 @@
   --card-hover:   0 8px 32px rgba(62, 31, 13, 0.18);
   --radius:       12px;
   --radius-sm:    8px;
+  /* --- Palet Warna Utama --- */
+  --brown-deep:    #1E1008;   /* Hitam kopi, dipakai sebagai warna gelap utama */
+  --brown-warm:    #5C2E0E;   /* Coklat kopi medium, untuk elemen brand */
+  --brown-mid:     #8B4A1C;   /* Coklat tengah, untuk hover dan border */
+  --amber:         #C8813A;   /* Aksen amber/emas, warna aksen utama */
+  --amber-light:   #E4A96A;   /* Amber muda, untuk hover state aksen */
+  --cream:         #F5EDD8;   /* Krem hangat, background utama halaman terang */
+  --cream-dark:    #EDE0C4;   /* Krem lebih gelap, untuk section bergantian */
+  --ivory:         #FBF7EF;   /* Putih gading, untuk card di atas background krem */
+  --charcoal:      #2C1A0E;   /* Charcoal coklat, teks utama */
+  --charcoal-soft: #4A3728;   /* Charcoal lebih lunak, untuk teks sekunder */
+  --warm-gray:     #8C7B6B;   /* Abu hangat, untuk placeholder dan metadata */
 
+  /* --- Warna Semantik (untuk komponen spesifik) --- */
+  --section-dark-bg:  #1E1008;   /* Background section gelap (hero, featured, dsb) */
+  --section-dark-text: #F5EDD8;  /* Teks di atas background gelap */
+  --card-bg:          var(--ivory);
+  --card-shadow:      0 4px 24px rgba(30, 16, 8, 0.10);
+  --card-shadow-hover:0 12px 40px rgba(30, 16, 8, 0.18);
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
 
@@ -137,9 +155,9 @@ p { color: #6B4C35; }
   top: 0;
   z-index: 1000;
   height: var(--nav-h);
-  background: rgba(255, 248, 241, 0.96);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(200, 169, 126, 0.25);
+  background-color: rgba(30, 16, 8, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200, 129, 58, 0.15);
   display: flex;
   align-items: center;
 }
@@ -175,7 +193,7 @@ p { color: #6B4C35; }
 .nav-links a {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--espresso);
+  color: rgba(245, 237, 216, 0.75);
   position: relative;
   padding-bottom: 4px;
   transition: color 0.2s;
