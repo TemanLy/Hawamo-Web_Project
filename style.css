@@ -184,16 +184,20 @@ p { color: #6B4C35; }
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 2px;
+  bottom: 0; 
+  left: 0;
+  width: 100%; 
+  height: 2px;
   background: var(--coffee);
   border-radius: 2px;
-  transition: width 0.25s ease;
+  transition: transform 0.25s ease;
+  transform: scaleX(0);
+  transform-origin: center;
 }
 .nav-links a:hover,
 .nav-links a.active { color: var(--coffee); }
 .nav-links a:hover::after,
-.nav-links a.active::after { width: 100%; }
+.nav-links a.active::after { transform: scaleX(1); }
 
 /* Hamburger (mobile) */
 .nav-toggle {
