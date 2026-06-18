@@ -747,6 +747,9 @@ footer a:hover { color: var(--latte); }
   display: flex;
   flex-direction: column;
 }
+.form-group span{
+  color: red;
+}
 .form-group label {
   font-size: 0.88rem;
   font-weight: 600;

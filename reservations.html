@@ -6,7 +6,6 @@
   <title>Hawamo Café — Reservations</title>
   <link rel="icon" href="assets/hawamo.png" type="icon">
   <link rel="stylesheet" href="style.css" />
-
 </head>
 <body>
 
@@ -43,14 +42,14 @@
 
         <!-- Left: info panel -->
         <div class="reservation-info reveal">
-          <h2 style="margin-bottom:16px;">Plan Your Visit</h2>
-          <p>Fill in the form and we'll confirm your reservation shortly via WhatsApp. Walk-ins are always welcome, but booking ahead guarantees your preferred spot.</p>
+          <h2 style="margin-bottom:16px;">Reservasi Sekarang</h2>
+          <p>Isi formulir dan kami akan mengkonfirmasi reservasi anda segera melalui WhatsApp. Anda dapat datang tanpa reservasi, tetapi reservasi dapat menjamin meja yang anda inginkan</p>
 
           <div style="margin-top: 32px;">
             <div class="res-detail">
               <span class="res-icon">📍</span>
               <div>
-                <strong>Location</strong><br/>
+                <strong>Lokasi Hawamo</strong><br/>
                 Jl. Kopi Sejati No. 12, Jambi City
               </div>
             </div>
@@ -91,24 +90,33 @@
             style="border-radius: var(--radius); margin-top:32px; height:200px; object-fit:cover; box-shadow: var(--card-shadow);"
           />
         </div>
-
+        
         <!-- Right: reservation form -->
         <div class="reveal">
           <div class="res-form-card">
-            <h3 style="margin-bottom:24px; font-family: var(--font-display);">Reservation Details</h3>
+            <h3 style="margin-bottom:24px; font-family: var(--font-display);">Reservation Form</h3>
 
             <!-- Form — validation handled by JS in script.js -->
             <form id="reservationForm" novalidate>
-
+              <div class="form-group">
+                  <label for="cabang">Pilih cabang <span>*</span></label>
+                  <select id="cabang" name="cabang">
+                    <option value="" disabled selected hidden>-- Pilih Outlet --</option>
+                    <option value="thehok">Hawamo Thehok</option>
+                    <option value="sipin">Hawamo Sipin</option>
+                    <option value="jelutung">Hawamo Jelutung</option>
+                  </select>
+                <span class="form-error"></span>
+              </div>
               <div class="form-row">
                 <!-- Full Name -->
                 <div class="form-group">
-                  <label for="name">Full Name *</label>
+                  <label for="name">Nama <span>*</span></label>
                   <input
                     type="text"
                     id="name"
                     name="name"
-                    placeholder="e.g. Rizky Pratama"
+                    placeholder="cth: Galeh Ramadhan"
                     autocomplete="name"
                   />
                   <span class="form-error"></span>
@@ -116,12 +124,12 @@
 
                 <!-- WhatsApp number -->
                 <div class="form-group">
-                  <label for="phone">WhatsApp Number *</label>
+                  <label for="phone">Nomor WhatsApp <span>*</span></label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
-                    placeholder="e.g. 0812-3456-7890"
+                    placeholder="cth: 0812-3456-7890"
                     autocomplete="tel"
                   />
                   <span class="form-error"></span>
@@ -131,7 +139,7 @@
               <div class="form-row">
                 <!-- Reservation date -->
                 <div class="form-group">
-                  <label for="date">Reservation Date *</label>
+                  <label for="date">Reservation Date <span>*</span></label>
                   <input
                     type="date"
                     id="date"
@@ -142,7 +150,7 @@
 
                 <!-- Reservation time -->
                 <div class="form-group">
-                  <label for="time">Reservation Time *</label>
+                  <label for="time">Reservation Time <span>*</span></label>
                   <input
                     type="time"
                     id="time"
@@ -156,30 +164,30 @@
 
               <!-- Number of guests -->
               <div class="form-group">
-                <label for="guests">Number of People *</label>
+                <label for="guests">Number of People <span>*</span></label>
                 <input
                   type="number"
                   id="guests"
                   name="guests"
                   min="1"
                   max="30"
-                  placeholder="e.g. 4"
+                  placeholder="cth: 4"
                 />
                 <span class="form-error"></span>
               </div>
 
               <!-- Additional notes -->
               <div class="form-group">
-                <label for="notes">Additional Notes <span style="font-weight:400; color:#9A7055;">(optional)</span></label>
+                <label for="notes">Catatan <span style="font-weight:400; color:#9A7055;">(optional)</span></label>
                 <textarea
                   id="notes"
                   name="notes"
-                  placeholder="e.g. Birthday celebration, outdoor seating preferred, wheelchair access needed…"
+                  placeholder="cth: Pesta ulang tahun, Pernikahan intim, Meeting…"
                 ></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width:100%; font-size:1rem; padding:14px;">
-                Submit Reservation ☕
+                Kirim Reservasi ☕
               </button>
 
             </form>

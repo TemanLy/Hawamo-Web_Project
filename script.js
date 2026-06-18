@@ -108,8 +108,9 @@
   };
 
   // Clear error on user input
-  form.querySelectorAll('input, textarea').forEach(input => {
+  form.querySelectorAll('input, textarea','select').forEach(input => {
     input.addEventListener('input', () => clearError(input));
+    input.addEventListener('change', () => clearError(input));
   });
 
   form.addEventListener('submit', e => {
@@ -121,9 +122,10 @@
     const date    = form.querySelector('#date');
     const time    = form.querySelector('#time');
     const guests  = form.querySelector('#guests');
+    const cabang  = form.querySelector('#cabang');
 
     // Reset previous errors
-    [name, phone, date, time, guests].forEach(clearError);
+    [name, phone, date, time, guests, cabang].forEach(clearError);
 
     // --- Validate each field ---
     if (!name.value.trim()) {
@@ -153,7 +155,10 @@
     if (!guests.value || parseInt(guests.value) < 1) {
       setError(guests, 'Minimum 1 person required.'); valid = false;
     }
-
+    if (!cabang.value) {
+      setError(cabang, 'Please select an outlet.');
+      valid = false;
+    }
     if (!valid) return;
 
     // --- Success ---
