@@ -87,69 +87,6 @@
   });
 })();
 
-
-// ===========================
-// 4. LOCATION MODAL — location.html
-// ===========================
-(function initLocationModal() {
-  const overlay    = document.getElementById('areaModal');
-  const modalIcon  = document.getElementById('modalIcon');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalDesc  = document.getElementById('modalDesc');
-  const closeBtn   = document.getElementById('modalClose');
-  if (!overlay) return;
-
-  // Area data — easy to expand
-  const areaData = {
-    indoor: {
-      icon: '🛋️',
-      title: 'Indoor Area',
-      desc: 'Our indoor area seats up to 40 guests in a cozy, air-conditioned space. Warm lighting, comfy chairs, and ambient music make it perfect for studying, working remotely, or catching up with friends over a hot cup of coffee.'
-    },
-    outdoor: {
-      icon: '🌿',
-      title: 'Outdoor Area',
-      desc: 'Breathe fresh air and enjoy natural greenery in our leafy outdoor seating area. It comfortably fits 20 guests and is ideal for casual meetings, relaxed conversations, or simply enjoying your drink under the open sky.'
-    },
-    parking: {
-      icon: '🚗',
-      title: 'Parking Area',
-      desc: 'We have a dedicated parking area that can accommodate up to 15 cars and 20 motorcycles. Free parking is available for all Hawamo customers during operating hours.'
-    },
-    photospot: {
-      icon: '📸',
-      title: 'Photo Spot',
-      desc: 'Strike a pose! Our specially designed photo corner features a beautiful floral backdrop and warm fairy lights. It\'s a fan favorite on social media — come create your next great shot at Hawamo.'
-    }
-  };
-
-  // Open modal when an area card is clicked
-  document.querySelectorAll('.area-card[data-area]').forEach(card => {
-    card.addEventListener('click', () => {
-      const key  = card.dataset.area;
-      const data = areaData[key];
-      if (!data) return;
-
-      modalIcon.textContent  = data.icon;
-      modalTitle.textContent = data.title;
-      modalDesc.textContent  = data.desc;
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden'; // prevent background scroll
-    });
-  });
-
-  // Close modal handlers (button, backdrop click, Escape key)
-  const closeModal = () => {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  };
-
-  closeBtn.addEventListener('click', closeModal);
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-})();
-
-
 // ===========================
 // 5. RESERVATION FORM — reservations.html
 // ===========================
@@ -171,8 +108,9 @@
   };
 
   // Clear error on user input
-  form.querySelectorAll('input, textarea').forEach(input => {
+  form.querySelectorAll('input, textarea','select').forEach(input => {
     input.addEventListener('input', () => clearError(input));
+    input.addEventListener('change', () => clearError(input));
   });
 
   form.addEventListener('submit', e => {
@@ -184,9 +122,10 @@
     const date    = form.querySelector('#date');
     const time    = form.querySelector('#time');
     const guests  = form.querySelector('#guests');
+    const cabang  = form.querySelector('#cabang');
 
     // Reset previous errors
-    [name, phone, date, time, guests].forEach(clearError);
+    [name, phone, date, time, guests, cabang].forEach(clearError);
 
     // --- Validate each field ---
     if (!name.value.trim()) {
@@ -216,7 +155,10 @@
     if (!guests.value || parseInt(guests.value) < 1) {
       setError(guests, 'Minimum 1 person required.'); valid = false;
     }
-
+    if (!cabang.value) {
+      setError(cabang, 'Please select an outlet.');
+      valid = false;
+    }
     if (!valid) return;
 
     // --- Success ---

@@ -19,8 +19,26 @@
   --card-hover:   0 8px 32px rgba(62, 31, 13, 0.18);
   --radius:       12px;
   --radius-sm:    8px;
+  /* --- Palet Warna Utama --- */
+  --brown-deep:    #1E1008;   /* Hitam kopi, dipakai sebagai warna gelap utama */
+  --brown-warm:    #5C2E0E;   /* Coklat kopi medium, untuk elemen brand */
+  --brown-mid:     #8B4A1C;   /* Coklat tengah, untuk hover dan border */
+  --amber:         #C8813A;   /* Aksen amber/emas, warna aksen utama */
+  --amber-light:   #E4A96A;   /* Amber muda, untuk hover state aksen */
+  --cream:         #F5EDD8;   /* Krem hangat, background utama halaman terang */
+  --cream-dark:    #EDE0C4;   /* Krem lebih gelap, untuk section bergantian */
+  --ivory:         #FBF7EF;   /* Putih gading, untuk card di atas background krem */
+  --charcoal:      #2C1A0E;   /* Charcoal coklat, teks utama */
+  --charcoal-soft: #4A3728;   /* Charcoal lebih lunak, untuk teks sekunder */
+  --warm-gray:     #8C7B6B;   /* Abu hangat, untuk placeholder dan metadata */
 
-  --font-display: 'Playfair Display', Georgia, serif;
+  /* --- Warna Semantik (untuk komponen spesifik) --- */
+  --section-dark-bg:  #1E1008;   /* Background section gelap (hero, featured, dsb) */
+  --section-dark-text: #F5EDD8;  /* Teks di atas background gelap */
+  --card-bg:          var(--ivory);
+  --card-shadow:      0 4px 24px rgba(30, 16, 8, 0.10);
+  --card-shadow-hover:0 12px 40px rgba(30, 16, 8, 0.18);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
 
   --nav-h:        64px;
@@ -137,9 +155,9 @@ p { color: #6B4C35; }
   top: 0;
   z-index: 1000;
   height: var(--nav-h);
-  background: rgba(255, 248, 241, 0.96);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(200, 169, 126, 0.25);
+  background-color: rgba(30, 16, 8, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200, 129, 58, 0.15);
   display: flex;
   align-items: center;
 }
@@ -156,15 +174,19 @@ p { color: #6B4C35; }
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--espresso);
+  color: var(--amber-light);
   letter-spacing: 0.01em;
 }
 .nav-logo{
   width: 36px;
   height: 36px;
+  margin-right: 5px;
   object-fit: contain;
 }
-.nav-brand span { color: var(--coffee); }
+.nav-brand span { 
+  color: var(--white); 
+  font-weight: 450;
+}
 
 .nav-links {
   display: flex;
@@ -175,7 +197,7 @@ p { color: #6B4C35; }
 .nav-links a {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--espresso);
+  color: rgba(245, 237, 216, 0.75);
   position: relative;
   padding-bottom: 4px;
   transition: color 0.2s;
@@ -184,16 +206,20 @@ p { color: #6B4C35; }
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 2px;
-  background: var(--coffee);
-  border-radius: 2px;
-  transition: width 0.25s ease;
+  bottom: 0; 
+  left: 0;
+  width: 100%; 
+  height: 1px;
+  background: var(--amber);
+  border-radius: 1px;
+  transition: transform 0.25s ease;
+  transform: scaleX(0);
+  transform-origin: center;
 }
 .nav-links a:hover,
-.nav-links a.active { color: var(--coffee); }
+.nav-links a.active { color: var(--cream); }
 .nav-links a:hover::after,
-.nav-links a.active::after { width: 100%; }
+.nav-links a.active::after { transform: scaleX(1); }
 
 /* Hamburger (mobile) */
 .nav-toggle {
@@ -476,7 +502,7 @@ footer a:hover { color: var(--latte); }
 /* ===========================
    LOCATION PAGE
    =========================== */
-.map-container {
+.map-container.image-map-wrapper {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--card-shadow);
@@ -489,10 +515,79 @@ footer a:hover { color: var(--latte); }
   border: 2px dashed var(--latte);
   margin-bottom: 56px;
 }
-.map-container iframe {
-  width: 100%; height: 100%; border: none;
+
+.image-map {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
+.pin-1,
+.pin-2,
+.pin-3 {
+  position: absolute;
+  z-index: 5;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #d93025;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+  transform: translate(-50%, -100%);
+  transition: transform 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.28));
+}
+
+.pin-1:hover,
+.pin-2:hover,
+.pin-3:hover {
+  transform: translate(-50%, -120%);
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.35));
+}
+
+.pin-label {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  margin-top: 6px;
+  background: var(--white);
+  color: var(--espresso);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 999px;
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, margin-top 0.2s ease;
+}
+
+.pin-1:hover .pin-label,
+.pin-2:hover .pin-label,
+.pin-3:hover .pin-label {
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.pin-1 {
+  top: 31%;
+  left: 61%;
+}
+
+.pin-2 {
+  top: 24%;
+  left: 44%;
+}
+
+.pin-3 {
+  top: 65%;
+  left: 36%;
+}
 .area-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -695,6 +790,9 @@ footer a:hover { color: var(--latte); }
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+}
+.form-group span{
+  color: red;
 }
 .form-group label {
   font-size: 0.88rem;
