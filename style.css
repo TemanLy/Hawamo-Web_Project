@@ -174,15 +174,19 @@ p { color: #6B4C35; }
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--espresso);
+  color: var(--amber-light);
   letter-spacing: 0.01em;
 }
 .nav-logo{
   width: 36px;
   height: 36px;
+  margin-right: 5px;
   object-fit: contain;
 }
-.nav-brand span { color: var(--coffee); }
+.nav-brand span { 
+  color: var(--white); 
+  font-weight: 450;
+}
 
 .nav-links {
   display: flex;
