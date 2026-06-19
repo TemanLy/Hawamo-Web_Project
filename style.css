@@ -226,6 +226,23 @@ p { color: #6B4C35; }
   max-width: 1140px;
   margin: 0 auto;
 }
+.bg_hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  display: block;
+  width: 100%;
+
+  background: linear-gradient(
+    to top,
+    var(--cream) 5%,
+    rgba(255, 248, 241, 0.97) 5%,
+    rgba(255, 248, 241, 0.78) 10%,
+    rgba(255, 255, 255, 0) 20%
+  );
+}
 
 .hero-text { animation: fadeInUp 0.7s ease both; }
 .hero-text .eyebrow {
@@ -269,7 +286,7 @@ p { color: #6B4C35; }
 /* ===========================
    WHY CHOOSE (index.html)
    =========================== */
-.why-section { background: var(--white); }
+.why-section { background: var(--white); z-index: 1;}
 
 .why-grid {
   display: grid;
@@ -433,6 +450,7 @@ footer a:hover { color: var(--latte); }
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 48px;
+  background-image: url("doodle.png");
 }
 .filter-btn {
   padding: 8px 22px;
