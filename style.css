@@ -139,10 +139,11 @@ p { color: #6B4C35; }
 .section-title {
   text-align: center;
   margin-bottom: 12px;
+  color: var(--ivory);
 }
 .section-subtitle {
   text-align: center;
-  color: #9A7055;
+  color: var(--ivory);
   margin-bottom: 48px;
   font-size: 1rem;
 }
@@ -260,13 +261,15 @@ p { color: #6B4C35; }
   pointer-events: none;
   display: block;
   width: 100%;
+  top: 610px;
 
   background: linear-gradient(
     to top,
     var(--cream) 5%,
     rgba(255, 248, 241, 0.97) 5%,
-    rgba(255, 248, 241, 0.78) 10%,
-    rgba(255, 255, 255, 0) 20%
+    rgba(255, 248, 241, 0.1) 90%,
+    rgba(255, 248, 241, 0.78) 70%,
+    rgba(255, 255, 255, 0) 0%
   );
 }
 
