@@ -467,6 +467,10 @@ footer a:hover { color: var(--latte); }
    =========================== */
 .page-header {
   position: relative;
+  background-image: url("assets/Logo\ menyamping.png");
+  background-repeat: no-repeat;
+  background-size: 360px auto;
+  background-position: left 40px center;
   background-color: var(--brown-deep);
   color: var(--cream);
   text-align: center;
