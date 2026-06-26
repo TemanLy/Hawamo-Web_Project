@@ -30,6 +30,7 @@
 
   // Highlight the active page link
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll(".nav-links a");
   document.querySelectorAll('.nav-links a').forEach(link => {
     const linkPage = link.getAttribute('href');
     if (linkPage === currentPath) link.classList.add('active');
