@@ -500,7 +500,7 @@ footer a:hover { color: var(--latte); }
   background-position:left 40px center;
   transform: translateY(-50%) translateX(-24px);
   opacity: 0;
-  animation: logoFadeIn 0.9s ease forwards;
+  animation: logoFadeIn 1.5s ease forwards;
   pointer-events: none;
   z-index: 1;
 }
