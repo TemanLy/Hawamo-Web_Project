@@ -466,10 +466,20 @@ footer a:hover { color: var(--latte); }
    PAGE HEADER (inner pages)
    =========================== */
 .page-header {
-  background: linear-gradient(135deg, var(--espresso) 0%, #5C2E10 100%);
+  position: relative;
+  background-color: var(--brown-deep);
   color: var(--cream);
   text-align: center;
   padding: 72px 24px;
+}
+.page-header::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%,
+    rgba(92, 46, 14, 0.5) 0%,
+    transparent 60%);
+  pointer-events: none;
 }
 .page-header h1 { color: var(--cream); margin-bottom: 12px; }
 .page-header p  { color: rgba(255,248,241,0.75); font-size: 1.05rem; }
